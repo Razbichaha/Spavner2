@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject _pointSpavn1;
     [SerializeField] private GameObject _pointSpavn2;
     private bool _switch = true;
+    private int _pauseTime = 2;
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class Spawner : MonoBehaviour
     IEnumerator SpawnNps(GameObject gameObject, Transform transform)
     {
         GameObject nps = Instantiate(gameObject, transform);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(_pauseTime);
         Spawn();
     }
 }
