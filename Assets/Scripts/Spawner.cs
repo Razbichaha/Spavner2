@@ -1,37 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _npsSpawn;
-    [SerializeField] private GameObject _pointSpavn1;
-    [SerializeField] private GameObject _pointSpavn2;
-    private bool _switch = true;
+    [SerializeField] private GameObject _nps;
+    [SerializeField] private GameObject[] _pointSpawn = new GameObject[2];
+
     private int _pauseTime = 2;
 
-    void Start()
+    private void Start()
     {
         Spawn();
     }
 
     private void Spawn()
     {
-        if (_switch)
-        {
-            StartCoroutine(SpawnNps(_npsSpawn,_pointSpavn1.transform));
-            _switch = false;
-        }else
-        {
-            StartCoroutine(SpawnNps(_npsSpawn, _pointSpavn2.transform));
-            _switch = true;
-        }
+        StartCoroutine(SpawnNps());
     }
 
-    IEnumerator SpawnNps(GameObject gameObject, Transform transform)
+    IEnumerator SpawnNps()
     {
-        GameObject nps = Instantiate(gameObject, transform);
-        yield return new WaitForSeconds(_pauseTime);
+        for (int i = 0; i < _pointSpawn.Length; i++)
+        {
+            Instantiate(_nps, _pointSpawn[i].transform);
+            yield return new WaitForSeconds(_pauseTime);
+        }
+
         Spawn();
     }
 }
