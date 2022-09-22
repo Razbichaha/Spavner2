@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-   private Nps _nps = new Nps();
-    [SerializeField] private GameObject _nps;
+    [SerializeField] private Nps _nps;
     [SerializeField] private Transform[] _pointSpawn = new Transform[2];
 
     private int _pauseTime = 2;

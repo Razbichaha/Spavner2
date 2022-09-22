@@ -4,7 +4,4 @@ using UnityEngine;
 
 public class Nps : MonoBehaviour
 {
-    [SerializeField] private GameObject _nps;
-
-   
 }
